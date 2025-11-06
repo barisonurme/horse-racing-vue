@@ -9,11 +9,6 @@ cd <your-repo-name>
 
 ### 2. Run Commands
 
-Switch to the `develop` branch:
-```bash
-git switch -c develop
-```
-
 ```bash
 pnpm install
 ```
