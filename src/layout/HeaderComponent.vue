@@ -1,47 +1,43 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { RouterLink } from "vue-router";
+import { NLayoutHeader, NFlex, NButton } from "naive-ui";
 </script>
 
-
-
 <template>
-    <header>
+    <n-layout-header bordered class="header">
+        <n-flex justify="space-between" align-items="center" class="navigation-wrapper">
+            <n-flex class="logo">
+                <img src="@/assets/logo.svg" alt="Vue logo" width="28" height="28" preview-disabled />
+                <span class="logo-text">Horse Racing Game</span>
+            </n-flex>
 
-        <section class="navigation-wrapper">
-            <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="25" height="25" />
+            <n-flex gap="12">
+                <RouterLink to="/">
+                    <n-button quaternary type="primary">Home</n-button>
+                </RouterLink>
+                <RouterLink to="/about">
+                    <n-button quaternary type="primary">About</n-button>
+                </RouterLink>
+            </n-flex>
+        </n-flex>
 
-            <nav class="navigation">
-                <RouterLink to="/">Home</RouterLink>
-                <RouterLink to="/about">About</RouterLink>
-            </nav>
-        </section>
-    </header>
+    </n-layout-header>
 </template>
 
 <style scoped>
-.navigation {
+.header {
     padding: 0.5rem 1rem;
-    width: 100%;
-    flex: 1;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: flex-end;
+    background-color: var(--n-color-overlay);
+    color: var(--n-text-color);
 }
 
-.navigation-wrapper {
+.logo {
     display: flex;
-    padding: 0.5rem 1rem;
-    justify-content: space-between;
     align-items: center;
-    background-color: var(--vt-c-indigo);
-    width: 100%;
 }
 
-header {
-    display: flex;
-    width: 100%;
-    line-height: 1.5;
-    max-height: 100vh;
+.logo-text {
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 </style>

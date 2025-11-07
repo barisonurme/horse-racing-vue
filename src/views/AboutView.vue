@@ -1,114 +1,101 @@
-<script setup lang="ts">
-import packagejson from '../../package.json';
-</script>
-
 <template>
   <div class="about-page">
-    <div class="container">
-      <h1 class="title">Horse Racing {{ packagejson.version }}</h1>
-      <p class="intro">
-        This project is an interactive horse racing simulation built with <strong>Vue 3</strong> and
-        <strong>Vuex</strong>.
-        It’s designed to demonstrate clean component architecture, scalable state management, and simple animation
-        handling.
-      </p>
+    <n-card class="card" size="large">
+      <template #header>
+        <n-h1 class="card-title">About the {{ packageInfo.name }} {{ packageInfo.version }}</n-h1>
+      </template>
 
-      <section class="section">
-        <h2>Game Overview</h2>
-        <ul>
-          <li>Up to <strong>20 horses</strong> with unique colors and condition scores.</li>
-          <li><strong>6 rounds</strong> of racing, each with different track lengths (1200 m – 2200 m).</li>
-          <li><strong>Animated horse movement</strong> and live race results after each round.</li>
-        </ul>
-      </section>
+      <n-h2 strong>Game Overview</n-h2>
+      <n-list bordered>
+        <n-list-item>
+          Up to <strong>20 horses</strong> with unique colors and condition scores.
+        </n-list-item>
+        <n-list-item>
+          <strong>6 rounds</strong> per race from <strong>1200m</strong> to <strong>2200m</strong>.
+        </n-list-item>
+        <n-list-item>
+          <strong>Animated horse movement</strong> and live results per round.
+        </n-list-item>
+      </n-list>
 
-      <section class="section">
-        <h2>Technologies Used</h2>
-        <ul>
-          <li><strong>Vue 3 Composition API</strong> – component logic and reactivity.</li>
-          <li><strong>Vuex</strong> – centralized state management for horses, races, and results.</li>
-          <li><strong>Vite</strong> – fast development and build tooling.</li>
-          <li><strong>CSS Animations</strong> – for smooth race visuals.</li>
-        </ul>
-      </section>
+      <n-h2>Technologies Used</n-h2>
+      <n-space horizontal size="small">
+        <n-tag type="primary" size="large">Vue 3 Composition API</n-tag>
+        <n-tag type="primary" size="large">Vuex</n-tag>
+        <n-tag type="primary" size="large">Vite</n-tag>
+        <n-tag type="primary" size="large">Naive UI</n-tag>
+      </n-space>
 
-      <section class="section">
-        <h2>How It Works</h2>
-        <ol>
-          <li>Click <em>Generate</em> to create the horses and race schedule.</li>
-          <li>Click <em>Start</em> to begin all six rounds sequentially.</li>
-          <li>Watch horses race and view results in real time.</li>
-        </ol>
-      </section>
+      <n-h2>How It Works</n-h2>
+      <n-list>
+        <n-list-item>
+          Click <n-tag type="default" size="small">Generate Program</n-tag> to create horses & race schedule.
+        </n-list-item>
+        <n-list-item>
+          Click <n-tag type="success" size="small">Start</n-tag> to begin laps.
+        </n-list-item>
+        <n-list-item>
+          Watch the live animations and see results update in real time.
+        </n-list-item>
+      </n-list>
 
-      <section class="section">
-        <h2>Notes</h2>
-        <p>
-          The app’s structure is intentionally modular—ideal for scaling into a larger game or dashboard.
-          Store actions handle all business logic, while components stay focused on presentation.
-        </p>
-      </section>
+      <n-card size="small" class="notes-card">
+        <n-h2>Notes</n-h2>
+        <n-text depth="3">
+          The project is structured for scalability. Game logic lives in the Vuex store,
+          while each component focuses on UI and interactivity.
+        </n-text>
+      </n-card>
 
-      <footer class="footer">
-        <p>Built with ❤️ using Vue 3 & Vuex</p>
-      </footer>
-    </div>
+
+    </n-card>
   </div>
 </template>
+
+<script setup lang="ts">
+import { NCard, NH1, NH2, NList, NListItem, NTag, NSpace, NText } from "naive-ui";
+import packageInfo from "../../package.json";
+</script>
 
 <style scoped>
 .about-page {
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
-  background: linear-gradient(180deg, #f7f9fc 0%, #fff 100%);
-  min-height: 100vh;
-  color: #222;
-}
-
-.container {
-  max-width: 760px;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+  background: var(--color-background);
+  padding: 24px;
+  min-height: 100%;
 }
 
 .intro {
-  font-size: 1.1rem;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
   line-height: 1.6;
 }
 
-.section {
-  margin-bottom: 32px;
-}
-
-.section h2 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-}
-
-.section ul,
-.section ol {
-  padding-left: 24px;
-}
-
-.section li {
-  margin-bottom: 6px;
-  list-style-type: disc;
+.notes {
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .footer {
   text-align: center;
-  margin-top: 48px;
-  font-size: 0.9rem;
-  color: #555;
+  margin-top: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 800px;
 }
 
 h2 {
-  font-weight: bold;
+  margin-top: 24px !important;
+  margin-bottom: 12px !important;
+}
+
+.notes-card {
+  padding-bottom: 24px;
 }
 </style>
