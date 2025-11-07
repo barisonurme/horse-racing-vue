@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import HeaderComponent from './layout/HeaderComponent.vue';
+import HeaderComponent from './layout/HeaderComponent.vue'
+import { NConfigProvider, NGlobalStyle } from 'naive-ui'
 </script>
 
 <template>
-  <section class="app">
-    <HeaderComponent />
+  <n-config-provider>
+    <n-global-style />
+    <section class="app">
+      <HeaderComponent />
 
-    <section class="main-content">
-      <RouterView />
+      <section class="main-content">
+        <RouterView />
+      </section>
     </section>
-  </section>
+  </n-config-provider>
 </template>
 
 <style scoped>
