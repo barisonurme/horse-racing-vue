@@ -7,24 +7,28 @@
 <script lang="ts" setup>
 import type { THorse } from "@/views/HippodromeView.vue";
 import { NCard, NDataTable } from "naive-ui";
+import type { TableColumns } from "naive-ui/es/data-table/src/interface";
 
 defineProps<{
     horses: THorse[];
 }>();
 
-const columns = [
+
+const columns: TableColumns<THorse> = [
     {
         title: 'Name',
         key: 'name'
     },
     {
-        title: 'Condition',
-        key: 'condition',
-        render: () => Math.floor(Math.random() * 100) + 1 // 1-100
+        align: 'right',
+        title: "Condition",
+        key: "condition",
+        render: (row) => `${row.condition ?? Math.floor(Math.random() * 100) + 1}%`,
     },
     {
+        align: 'right',
         title: 'Color',
-        key: 'color'
-    }
-];
+        key: 'color',
+    },
+]
 </script>

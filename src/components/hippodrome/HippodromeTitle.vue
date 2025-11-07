@@ -1,10 +1,9 @@
 <template>
     <div class="title-wrapper">
         <div class="title-desc-wrapper">
-            <n-h2>Welcome to the Hippodrome</n-h2>
-            <n-h4>Experience the thrill of horse racing like never before!</n-h4>
+            <n-h2>Welcome to the Hippodrome!</n-h2>
         </div>
-        <div class="title-action-buttons" style="margin-top: 20px;">
+        <div class="title-action-buttons">
             <n-button type="tertiary" size="large" style="margin-right: 10px; ">
                 Generate Program
             </n-button>
@@ -16,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { NButton, NH2, NH4 } from "naive-ui";
+import { NButton, NH2 } from "naive-ui";
 </script>
 
 <style scoped>
@@ -26,7 +25,6 @@ import { NButton, NH2, NH4 } from "naive-ui";
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    margin-bottom: 50px;
     width: 100%;
 }
 
