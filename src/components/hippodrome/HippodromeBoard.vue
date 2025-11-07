@@ -22,7 +22,7 @@ const columns: DataTableColumns<THorse> = [
         render: (_, index) => index + 1,
     },
     {
-        align: "right",
+        align: "left",
         title: "Name",
         key: "name",
     },

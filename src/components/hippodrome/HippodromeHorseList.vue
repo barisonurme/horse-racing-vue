@@ -20,15 +20,15 @@ const columns: TableColumns<THorse> = [
         key: 'name'
     },
     {
+        align: 'left',
+        title: 'Color',
+        key: 'color',
+    },
+    {
         align: 'right',
         title: "Condition",
         key: "condition",
         render: (row) => `${row.condition ?? Math.floor(Math.random() * 100) + 1}%`,
-    },
-    {
-        align: 'right',
-        title: 'Color',
-        key: 'color',
     },
 ]
 </script>
