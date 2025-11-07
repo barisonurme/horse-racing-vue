@@ -1,6 +1,9 @@
 @import './base.css';
 
 /* CSS Reset */
+.n-h {
+  --n-margin: 0 !important;
+}
 *,
 *::before,
 *::after {
