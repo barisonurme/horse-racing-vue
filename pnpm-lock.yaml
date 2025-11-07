@@ -17,6 +17,9 @@ importers:
       vue-router:
         specifier: ^4.6.3
         version: 4.6.3(vue@3.5.23(typescript@5.9.3))
+      vuex:
+        specifier: ^4.0.2
+        version: 4.0.2(vue@3.5.23(typescript@5.9.3))
     devDependencies:
       '@playwright/test':
         specifier: ^1.56.1
@@ -2099,6 +2102,11 @@ packages:
     resolution: {integrity: sha512-lXuMl+8gsBmruudfxnMF9HW4be8rFziylXFu1VHVNbLVhRTXXV4njvpRuJapD/8q+oFEMSfQMH16E/85VoWRyQ==}
     peerDependencies:
       vue: ^3.0.11
+
+  vuex@4.0.2:
+    resolution: {integrity: sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==}
+    peerDependencies:
+      vue: ^3.0.2
 
   w3c-xmlserializer@5.0.0:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}
@@ -4199,6 +4207,11 @@ snapshots:
       seemly: 0.3.10
       vdirs: 0.1.8(vue@3.5.23(typescript@5.9.3))
       vooks: 0.2.12(vue@3.5.23(typescript@5.9.3))
+      vue: 3.5.23(typescript@5.9.3)
+
+  vuex@4.0.2(vue@3.5.23(typescript@5.9.3)):
+    dependencies:
+      '@vue/devtools-api': 6.6.4
       vue: 3.5.23(typescript@5.9.3)
 
   w3c-xmlserializer@5.0.0:
