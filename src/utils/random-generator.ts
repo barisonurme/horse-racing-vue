@@ -7,9 +7,9 @@ export const generateHorseName = () => uniqueNamesGenerator({
 });
 
 
-const usedColors = new Set<string>();
 
-export const generateUniqueColors = (): string => {
+
+export const generateUniqueColors = ({ usedColors }: { usedColors: Set<string> }): string => {
   const availableColors = colors.filter(color => !usedColors.has(color));
 
   if (availableColors.length === 0) {

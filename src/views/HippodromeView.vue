@@ -44,10 +44,13 @@ export type THorse = {
     condition: number
 }
 
+const usedColors = new Set<string>();
+
 const horses: THorse[] = Array.from({ length: HIPPODROME_HORSE_COUNT }, () => ({
     id: crypto.randomUUID(),
     name: generateHorseName(),
-    color: generateUniqueColors(),
+    color: generateUniqueColors({ usedColors }),
+    condition: Math.floor(Math.random() * 100) + 1
 }));
 </script>
 
