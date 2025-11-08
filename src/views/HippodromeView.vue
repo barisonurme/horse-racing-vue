@@ -1,21 +1,21 @@
 <template>
     <div class="main-wrapper">
         <n-card class="main-card">
-            <HippodromeTitle />
+            <HippodromeHeader />
             <n-divider horizontal />
 
             <n-grid :cols="12" :gap="16">
-                <n-grid-item :span="3" style="overflow-y: auto;">
+                <n-grid-item class="horse-list-wrapper" :span="3" style="overflow-y: auto;">
                     <HippodromeHorseList :horses="horses" />
                 </n-grid-item>
-                <n-grid-item :span="5">
-                    <HippodromeRacingTracks :trackPerRace="HIPPODROME_TRACK_PER_RACE" />
+                <n-grid-item class="horse-list-wrapper" :span="5">
+                    <HippodromeRacingTrack :trackPerRace="HIPPODROME_TRACK_PER_RACE" />
                 </n-grid-item>
-                <n-grid-item :span="2" style="overflow-y: auto;">
-                    <HippodromeBoard :title="'Program'" :data="horses" />
+                <n-grid-item class="horse-list-wrapper" :span="2" style="overflow-y: auto;">
+                    <HippodromeProgram title="Program" />
                 </n-grid-item>
-                <n-grid-item :span="2" style="overflow-y: auto;">
-                    <HippodromeBoard :title="'Results'" :data="horses" />
+                <n-grid-item class="horse-list-wrapper" :span="2" style="overflow-y: auto;">
+                    <HippodromeResults title="Results" />
                 </n-grid-item>
             </n-grid>
         </n-card>
@@ -24,41 +24,27 @@
 
 <script setup lang="ts">
 import HippodromeHorseList from "@/components/hippodrome/HippodromeHorseList.vue";
-import HippodromeTitle from "@/components/hippodrome/HippodromeTitle.vue";
-import { generateHorseName, generateUniqueColors } from "@/utils/random-generator";
+import HippodromeHeader from "@/components/hippodrome/HippodromeHeader.vue";
 import { NCard, NDivider, NGrid, NGridItem } from "naive-ui";
-import HippodromeRacingTracks from "./HippodromeRacingTracks.vue";
-import HippodromeBoard from "@/components/hippodrome/HippodromeBoard.vue";
+import HippodromeRacingTrack from "./HippodromeRacingTrack.vue";
+import HippodromeProgram from "@/components/hippodrome/HippodromeProgram.vue";
+import { useStore } from "vuex";
+import { HIPPODROME_TRACK_PER_RACE, key } from "@/store/store";
+import HippodromeResults from "@/components/hippodrome/HippodromeResults.vue";
 
-const HIPPODROME_HORSE_COUNT = 20;
-// const HIPPODROME_HORSE_PER_RACE = Math.min(6, HIPPODROME_HORSE_COUNT); // We added HIPPODROME_HORSE_COUNT to easily change horse count in future
-const HIPPODROME_TRACK_PER_RACE = 10;
-// const HIPPODROME_LAPS_COUNT = 4;
-// const HIPPODROME_RACE_INTERVAL_SECONDS = 30;
-// const HIPPODROME_LAPS_LENGTH = [1200, 1600, 2000, 2400];
 
-export type THorse = {
-    id: string;
-    name: string;
-    color: string;
-    condition: number
-}
+const store = useStore(key)
+const { horses } = store.state;
 
-const usedColors = new Set<string>();
 
-const horses: THorse[] = Array.from({ length: HIPPODROME_HORSE_COUNT }, () => ({
-    id: crypto.randomUUID(),
-    name: generateHorseName(),
-    color: generateUniqueColors({ usedColors }),
-    condition: Math.floor(Math.random() * 100) + 1
-}));
 </script>
 
 <style>
 .main-wrapper {
     padding: 20px;
-    height: 100%;
     width: 100%;
+    max-height: calc(100dvh - 60px);
+    overflow-y: auto;
 }
 
 .main-card {
@@ -66,5 +52,10 @@ const horses: THorse[] = Array.from({ length: HIPPODROME_HORSE_COUNT }, () => ({
     flex-direction: row;
     height: 100%;
     width: 100%;
+}
+
+.horse-list-wrapper {
+    max-height: calc(100dvh - 240px);
+    overflow-y: auto;
 }
 </style>

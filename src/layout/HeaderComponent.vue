@@ -26,9 +26,16 @@ import { NLayoutHeader, NFlex, NButton } from "naive-ui";
 
 <style scoped>
 .header {
+    display: flex;
+    align-items: center;
+    height: 60px;
     padding: 0.5rem 1rem;
     background-color: var(--n-color-overlay);
     color: var(--n-text-color);
+}
+
+.navigation-wrapper {
+    width: 100%;
 }
 
 .logo {

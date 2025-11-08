@@ -1,7 +1,7 @@
 <template>
   <section class="welcome-section">
     <n-card class="welcome-card" hoverable>
-      <n-h1 class="title">Welcome to the Race!</n-h1>
+      <n-h1 class="title">Welcome to the GallopIn’sider!</n-h1>
       <n-h3 depth="2">Are you ready to join the excitement?</n-h3>
 
 

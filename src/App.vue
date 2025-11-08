@@ -22,11 +22,13 @@ import { NConfigProvider, NGlobalStyle } from 'naive-ui'
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
+  /* full viewport height */
 }
 
 .main-content {
-  flex: 1;
+  max-height: calc(100dvh - 60px);
+  /* subtract header height */
   overflow-y: auto;
 }
 </style>
