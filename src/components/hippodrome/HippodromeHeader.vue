@@ -7,8 +7,8 @@
                 Hippodrome!</n-text>
         </div>
         <div class="title-action-buttons">
-            <n-button @click="generateProgram" :type="isGenerated ? 'tertiary' : 'primary'" size="large"
-                style="margin-right: 10px; ">
+            <n-button data-test="generate-program-button" @click="generateProgram"
+                :type="isGenerated ? 'tertiary' : 'primary'" size="large" style="margin-right: 10px; ">
                 <template #icon>
                     <n-icon>
                         <n-icon :size="18" :component="TextBulletListAdd20Filled" />
@@ -21,8 +21,8 @@
 
 
             <!-- Start race button -->
-            <n-button style="min-width: 120px;" @click="startRace" :type="!isGenerated ? 'tertiary' : 'primary'"
-                :disabled="!isGenerated || allLapsFinished" size="large">
+            <n-button data-test="play-toggle-button" style="min-width: 120px;" @click="startRace"
+                :type="!isGenerated ? 'tertiary' : 'primary'" :disabled="!isGenerated || allLapsFinished" size="large">
                 <template #icon>
                     <n-icon>
                         <n-icon :size="18" :component="isPaused ? Play16Filled : Pause16Filled" />

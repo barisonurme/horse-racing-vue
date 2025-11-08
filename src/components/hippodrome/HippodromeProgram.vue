@@ -1,5 +1,5 @@
 <template>
-    <n-card size="huge" class="program-main-wrapper" style="overflow-y: auto;">
+    <n-card data-test="hippodrome-program" size="huge" class="program-main-wrapper" style="overflow-y: auto;">
         <n-divider style="margin-top: 0px; margin-bottom: 12px;" horizontal />
 
         <div v-for="(round, index) in store.state.program?.rounds ?? []" :key="round.id" class="mb-4">

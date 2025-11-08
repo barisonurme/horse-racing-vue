@@ -7,8 +7,8 @@
     </p>
     <n-flex vertical style="width: 100%;">
         <n-text italic style="margin-bottom: 10px;">{{ currentHorse?.name ?? "Not Generated" }}</n-text>
-        <n-slider class="horse-slider-wrapper" v-model:value="currentHorsePosition" :max="currentRound?.distance"
-            :step="0.1" :style="{
+        <n-slider data-test='horse-slider' class="horse-slider-wrapper" v-model:value="currentHorsePosition"
+            :max="currentRound?.distance" :step="0.1" :style="{
                 display: 'flex',
                 alignItems: 'center',
                 '--n-fill-color': currentHorse?.color || '#18a058',

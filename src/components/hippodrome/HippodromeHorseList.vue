@@ -1,7 +1,7 @@
 <template>
     <n-card size="huge" class="horse-list-wrapper" title="Horse List">
         <n-divider style="margin-top: 0px; margin-bottom: 12px;" horizontal />
-        <n-data-table :columns="columns" :data="horses" :bordered="true" :size="'small'" />
+        <n-data-table data-test="horse-list" :columns="columns" :data="horses" :bordered="true" :size="'small'" />
     </n-card>
 </template>
 
