@@ -1,73 +1,68 @@
-# .
+# About the Horse-Racing Game 0.0.1-rc
 
-This template should help get you started developing with Vue 3 in Vite.
+## Installation
 
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+Install dependencies
+```bash
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-pnpm dev
+Start development server
+```bash
+pnpm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
+Run E2E Test
+```bash
+pnpm run test:e2e
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-pnpm test:unit
+Build for production
+```bash
+pnpm run build
 ```
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
 
-```sh
-# Install browsers for the first run
-npx playwright install
+## Game Overview
 
-# When testing on CI, must build the project first
-pnpm build
+- Up to **20 horses** with unique colors and condition scores.  
+- **6 rounds** per race, ranging from **1200m to 2200m**.  
+- Animated horse movement with **live results** per round.  
 
-# Runs the end-to-end tests
-pnpm test:e2e
-# Runs the tests only on Chromium
-pnpm test:e2e --project=chromium
-# Runs the tests of a specific file
-pnpm test:e2e tests/example.spec.ts
-# Runs the tests in debug mode
-pnpm test:e2e --debug
-```
+---
 
-### Lint with [ESLint](https://eslint.org/)
+## Technologies Used
 
-```sh
-pnpm lint
-```
+- **Vue 3** (Composition API)  
+- **Vuex**  
+- **Vite**  
+- **Naive UI**  
+
+---
+
+## How It Works
+
+1. Click **Generate Program** to create horses and the race schedule.  
+2. Click **Start** to begin the laps.  
+3. Watch live animations and see results update in real time.  
+
+---
+
+## Notes
+
+- The project is structured for **scalability**.  
+- Game logic is managed in the **Vuex store**, while each component focuses on **UI and interactivity**.  
+
+---
+
+## Commands
+| Command              | Description                                        |
+| -------------------- | -------------------------------------------------- |
+| `npm run dev`        | Start the development server using Vite            |
+| `npm run build`      | Build the project with type checking               |
+| `npm run preview`    | Preview the production build                       |
+| `npm run test:e2e`   | Run end-to-end tests with Playwright               |
+| `npm run build-only` | Build the project without type checking            |
+| `npm run type-check` | Run TypeScript type checks                         |
+| `npm run lint`       | Lint code and auto-fix issues with ESLint          |
+| `npm run format`     | Format code in the `src/` directory using Prettier |
