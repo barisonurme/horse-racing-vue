@@ -1,22 +1,22 @@
 <template>
     <div class="main-wrapper">
         <HippodromeHeader />
-        <n-divider style="margin-top: 8px; margin-bottom: 8px;" horizontal />
+        <NDivider style="margin-top: 8px; margin-bottom: 8px;" horizontal />
 
-        <n-grid cols="1 s:2 m:4 l:12" responsive="screen" style="gap: 8px">
-            <n-grid-item :span="3" :s-span="1" :m-span="1" :l-span="1">
+        <NGrid cols="1 s:2 m:4 l:12" responsive="screen" style="gap: 8px">
+            <NGrid-item :span="3" :s-span="1" :m-span="1" :l-span="1">
                 <HippodromeHorseList :horses="horses" />
-            </n-grid-item>
-            <n-grid-item :span="5" :s-span="1" :m-span="1" :l-span="1">
+            </NGrid-item>
+            <NGrid-item :span="5" :s-span="1" :m-span="1" :l-span="1">
                 <HippodromeRacingTrack :trackPerRace="HIPPODROME_HORSE_PER_RACE" />
-            </n-grid-item>
-            <n-grid-item :span="2" :s-span="1" :m-span="1" :l-span="1">
+            </NGrid-item>
+            <NGrid-item :span="2" :s-span="1" :m-span="1" :l-span="1">
                 <HippodromeProgram title="Program" />
-            </n-grid-item>
-            <n-grid-item :span="2" :s-span="1" :m-span="1" :l-span="1">
+            </NGrid-item>
+            <NGrid-item :span="2" :s-span="1" :m-span="1" :l-span="1">
                 <HippodromeResults title="Results" />
-            </n-grid-item>
-        </n-grid>
+            </NGrid-item>
+        </NGrid>
     </div>
 </template>
 
@@ -53,7 +53,7 @@ const { horses } = store.state;
     }
 }
 
-.main-card {
+.maiNCard {
     display: flex;
     flex-direction: row;
     height: 100%;

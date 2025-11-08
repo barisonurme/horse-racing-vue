@@ -1,34 +1,30 @@
 <template>
     <div class="title-wrapper">
         <div class="title-desc-wrapper">
-            <n-h1 :style="{ fontWeight: 'bolder', color: themeVars.primaryColor }">GallopIn’sider</n-h1>
-            <n-text style="opacity: 0.8; font-size: medium;">Welcome to the GallopIn’sider
-                Hippodrome!</n-text>
+            <NH1 :style="{ fontWeight: 'bolder', color: themeVars.primaryColor }">GallopIn’sider</NH1>
+            <NText style="opacity: 0.8; font-size: medium;">Welcome to the GallopIn’sider
+                Hippodrome!</NText>
         </div>
-        <div class="title-action-buttons fixed-buttons-container">
-            <n-button data-test="generate-program-button" @click="generateProgram"
+        <div class="title-actioNButtons fixed-buttons-container">
+            <NButton data-test="generate-program-button" @click="generateProgram"
                 :type="isGenerated ? 'tertiary' : 'primary'" size="large" style="margin-right: 10px; ">
                 <template #icon>
-                    <n-icon>
-                        <n-icon :size="18" :component="TextBulletListAdd20Filled" />
-                    </n-icon>
+                    <NIcon :size="18" :component="TextBulletListAdd20Filled" />
                 </template>
 
                 Generate Program
-            </n-button>
+            </NButton>
             <!-- Pause/Resume button -->
 
 
             <!-- Start race button -->
-            <n-button data-test="play-toggle-button" style="min-width: 120px;" @click="startRace"
+            <NButton data-test="play-toggle-button" style="min-width: 120px;" @click="startRace"
                 :type="!isGenerated ? 'tertiary' : 'primary'" :disabled="!isGenerated || allLapsFinished" size="large">
                 <template #icon>
-                    <n-icon>
-                        <n-icon :size="18" :component="isPaused ? Play16Filled : Pause16Filled" />
-                    </n-icon>
+                    <NIcon :size="18" :component="isPaused ? Play16Filled : Pause16Filled" />
                 </template>
                 {{ isPaused ? 'Start' : 'Pause' }}
-            </n-button>
+            </NButton>
         </div>
     </div>
 </template>
@@ -98,7 +94,7 @@ const startRace = () => {
     align-items: start;
 }
 
-.title-action-buttons {
+.title-actioNButtons {
     display: flex;
     flex-direction: row;
     align-items: center;

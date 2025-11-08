@@ -1,28 +1,28 @@
 <template>
   <section class="welcome-section">
-    <n-card class="welcome-card" hoverable>
-      <n-h1 class="title">Welcome to the GallopIn’sider!</n-h1>
-      <n-h3 depth="2">Are you ready to join the excitement?</n-h3>
+    <NCard class="welcome-card" hoverable>
+      <NH1 class="title">Welcome to the GallopIn’sider!</NH1>
+      <NH3 depth="2">Are you ready to join the excitement?</NH3>
 
 
-      <n-text depth="3" class="description">
+      <NText depth="3" class="description">
         Get ready to experience the thrill of the Horse Racing Game where each race
         unfolds live, with animated horses competing round by round.
         You can generate your horses, view the schedule, and start the race when ready.
-      </n-text>
+      </NText>
 
-      <n-flex vertical gap="16" justify="center">
+      <NFlex vertical gap="16" justify="center">
         <!-- Navigate to Hippodrome -->
-        <n-button type="primary" size="large" class="start-btn" @click="router.push('/hippodrome')">
+        <NButton type="primary" size="large" class="start-btn" @click="router.push('/hippodrome')">
           Go to Hippodrome
-        </n-button>
+        </NButton>
 
         <!-- Navigate to Hippodrome -->
-        <n-button type="tertiary" size="large" class="start-btn" @click="router.push('/about')">
+        <NButton type="tertiary" size="large" class="start-btn" @click="router.push('/about')">
           Learn More
-        </n-button>
-      </n-flex>
-    </n-card>
+        </NButton>
+      </NFlex>
+    </NCard>
   </section>
 </template>
 

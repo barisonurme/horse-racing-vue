@@ -1,14 +1,14 @@
 <template>
-    <n-card size="huge" class="track-main-wrapper" :title="dynamicTitle">
-        <n-divider style=" margin-top: 0px; margin-bottom: 12px;" horizontal />
-        <n-flex v-for="trackIndex in trackPerRace" :key="trackIndex">
-            <n-card class="track-wrapper" :content-style="{ padding: '0', width: '100%' }">
-                <n-flex vertical style="display: flex; flex-direction: row;">
+    <NCard size="huge" class="track-main-wrapper" :title="dynamicTitle">
+        <NDivider style=" margin-top: 0px; margin-bottom: 12px;" horizontal />
+        <NFlex v-for="trackIndex in trackPerRace" :key="trackIndex">
+            <NCard class="track-wrapper" :content-style="{ padding: '0', width: '100%' }">
+                <NFlex vertical style="display: flex; flex-direction: row;">
                     <HippodromeHorseSlider :trackIndex="trackIndex" />
-                </n-flex>
-            </n-card>
-        </n-flex>
-    </n-card>
+                </NFlex>
+            </NCard>
+        </NFlex>
+    </NCard>
 </template>
 
 <script setup lang="ts">

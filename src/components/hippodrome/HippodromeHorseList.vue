@@ -1,8 +1,8 @@
 <template>
-    <n-card size="huge" class="horse-list-wrapper" title="Horse List" style="overflow-y: auto;">
-        <n-divider style=" margin-top: 0px; margin-bottom: 12px;" horizontal />
-        <n-data-table data-test="horse-list" :columns="columns" :data="horses" :bordered="true" :size="'small'" />
-    </n-card>
+    <NCard size="huge" class="horse-list-wrapper" title="Horse List" style="overflow-y: auto;">
+        <NDivider style=" margin-top: 0px; margin-bottom: 12px;" horizontal />
+        <NDataTable data-test="horse-list" :columns="columns" :data="horses" :bordered="true" :size="'small'" />
+    </NCard>
 </template>
 
 <script lang="ts" setup>
@@ -64,7 +64,7 @@ const columns: TableColumns<THorse> = [
     }
 }
 
-.primary-title :deep(.n-card-header__main) {
+.primary-title :deep(.NCard-header__main) {
     color: var(--n-color-primary);
 }
 </style>

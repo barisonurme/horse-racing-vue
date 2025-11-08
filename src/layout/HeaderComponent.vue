@@ -6,24 +6,24 @@ const themeVars = useThemeVars();
 </script>
 
 <template>
-    <n-layout-header :style="{ backgroundColor: themeVars.primaryColor }" bordered class="header">
-        <n-flex justify="space-between" align-items="center" class="navigation-wrapper">
-            <n-flex class="logo">
+    <NLayoutHeader :style="{ backgroundColor: themeVars.primaryColor }" bordered class="header">
+        <NFlex justify="space-between" align-items="center" class="navigation-wrapper">
+            <NFlex class="logo">
                 <img src="@/assets/logo.svg" alt="Vue logo" width="28" height="28" preview-disabled />
                 <span :style="{ color: themeVars.cardColor }" class="logo-text">Horse Racing Game</span>
-            </n-flex>
+            </NFlex>
 
-            <n-flex gap="12">
+            <NFlex gap="12">
                 <RouterLink to="/">
-                    <n-button :bordered='false' :text-color="themeVars.cardColor">Home</n-button>
+                    <NButton :bordered='false' :text-color="themeVars.cardColor">Home</NButton>
                 </RouterLink>
                 <RouterLink to="/about">
-                    <n-button :bordered='false' :text-color="themeVars.cardColor">About</n-button>
+                    <NButton :bordered='false' :text-color="themeVars.cardColor">About</NButton>
                 </RouterLink>
-            </n-flex>
-        </n-flex>
+            </NFlex>
+        </NFlex>
 
-    </n-layout-header>
+    </NLayoutHeader>
 </template>
 
 <style scoped>
@@ -33,7 +33,7 @@ const themeVars = useThemeVars();
     height: 60px;
     padding: 0.5rem 1rem;
     background-color: var(--n-color-overlay);
-    color: var(--n-text-color);
+    color: var(--NText-color);
 }
 
 .navigation-wrapper {

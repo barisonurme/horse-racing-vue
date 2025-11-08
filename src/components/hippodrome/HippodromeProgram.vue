@@ -1,18 +1,18 @@
 <template>
-    <n-card data-test="hippodrome-program" size="huge" class="program-main-wrapper" style="overflow-y: auto;">
-        <n-divider style="margin-top: 0px; margin-bottom: 12px;" horizontal />
+    <NCard data-test="hippodrome-program" size="huge" class="program-main-wrapper" style="overflow-y: auto;">
+        <NDivider style="margin-top: 0px; margin-bottom: 12px;" horizontal />
 
         <div v-for="(round, index) in store.state.program?.rounds ?? []" :key="round.id" class="mb-4">
-            <n-card :bordered="false" style="min-height: 500px;" size="small">
-                <n-flex style="padding: 5px;" justify="space-between" class="mb-4">
-                    <n-text style="font-weight: 700">{{ index + 1 }}. Lap</n-text>
-                    <n-text style="font-weight: 700">{{ reactiveProgram?.rounds[index]?.distance }}m</n-text>
-                </n-flex>
-                <n-data-table :columns="columns" :data="getRoundData(round.positions)" :bordered="true" size="small" />
+            <NCard :bordered="false" style="min-height: 500px;" size="small">
+                <NFlex style="padding: 5px;" justify="space-between" class="mb-4">
+                    <NText style="font-weight: 700">{{ index + 1 }}. Lap</NText>
+                    <NText style="font-weight: 700">{{ reactiveProgram?.rounds[index]?.distance }}m</NText>
+                </NFlex>
+                <NDataTable :columns="columns" :data="getRoundData(round.positions)" :bordered="true" size="small" />
 
-            </n-card>
+            </NCard>
         </div>
-    </n-card>
+    </NCard>
 </template>
 
 <script lang="ts" setup>
