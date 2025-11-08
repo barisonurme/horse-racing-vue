@@ -185,9 +185,6 @@ test('check all aria-valuenow values are non-zero then back to 0 within 30 secon
   // Click Play (Starts the simulation)
   await playButton.click();
 
-  // Wait a small, fixed amount to allow the values to start changing
-  await page.waitForTimeout(500);
-
   // --- STEP 1: Validate values are NOT 0 (Max 5 seconds) ---
 
   console.log('Validating values are NON-ZERO...');
