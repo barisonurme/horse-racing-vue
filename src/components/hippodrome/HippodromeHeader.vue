@@ -1,18 +1,33 @@
 <template>
     <div class="title-wrapper">
         <div class="title-desc-wrapper">
-            <n-h2>Welcome to the GallopIn’sider Hippodrome!</n-h2>
+            <n-h1 :style="{ fontWeight: 'bolder', color: themeVars.primaryColor }">Welcome to the GallopIn’sider
+                Hippodrome!</n-h1>
+            <n-text style="opacity: 0.8; font-size: medium;">Welcome to the GallopIn’sider
+                Hippodrome!</n-text>
         </div>
         <div class="title-action-buttons">
             <n-button @click="generateProgram" :type="isGenerated ? 'tertiary' : 'primary'" size="large"
                 style="margin-right: 10px; ">
+                <template #icon>
+                    <n-icon>
+                        <n-icon :size="18" :component="TextBulletListAdd20Filled" />
+                    </n-icon>
+                </template>
+
                 Generate Program
             </n-button>
             <!-- Pause/Resume button -->
 
 
             <!-- Start race button -->
-            <n-button @click="startRace" :type="!isGenerated ? 'tertiary' : 'primary'" :disabled="!isGenerated">
+            <n-button style="min-width: 120px;" @click="startRace" :type="!isGenerated ? 'tertiary' : 'primary'"
+                :disabled="!isGenerated">
+                <template #icon>
+                    <n-icon>
+                        <n-icon :size="18" :component="isPaused ? Play16Filled : Pause16Filled" />
+                    </n-icon>
+                </template>
                 {{ isPaused ? 'Start' : 'Pause' }}
             </n-button>
         </div>
@@ -21,9 +36,11 @@
 
 <script lang="ts" setup>
 import { store } from "@/store/store";
-import { NButton, NH2 } from "naive-ui";
+import { Play16Filled, TextBulletListAdd20Filled, Pause16Filled } from "@vicons/fluent";
+import { NButton, NH1, NText, NIcon, useThemeVars } from "naive-ui";
 import { computed } from "vue";
 
+const themeVars = useThemeVars();
 
 // Call mutation
 const generateProgram = () => {
@@ -47,7 +64,8 @@ const startRace = () => {
 
 <style scoped>
 .title-wrapper {
-    height: 45px;
+    padding: 4px;
+    height: 75px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -57,6 +75,7 @@ const startRace = () => {
 }
 
 .title-desc-wrapper {
+    padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: start;

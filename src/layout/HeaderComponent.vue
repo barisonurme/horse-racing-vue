@@ -1,22 +1,24 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import { NLayoutHeader, NFlex, NButton } from "naive-ui";
+import { NLayoutHeader, NFlex, NButton, useThemeVars } from "naive-ui";
+
+const themeVars = useThemeVars();
 </script>
 
 <template>
-    <n-layout-header bordered class="header">
+    <n-layout-header :style="{ backgroundColor: themeVars.primaryColor }" bordered class="header">
         <n-flex justify="space-between" align-items="center" class="navigation-wrapper">
             <n-flex class="logo">
                 <img src="@/assets/logo.svg" alt="Vue logo" width="28" height="28" preview-disabled />
-                <span class="logo-text">Horse Racing Game</span>
+                <span :style="{ color: themeVars.cardColor }" class="logo-text">Horse Racing Game</span>
             </n-flex>
 
             <n-flex gap="12">
                 <RouterLink to="/">
-                    <n-button quaternary type="primary">Home</n-button>
+                    <n-button :bordered='false' :text-color="themeVars.cardColor">Home</n-button>
                 </RouterLink>
                 <RouterLink to="/about">
-                    <n-button quaternary type="primary">About</n-button>
+                    <n-button :bordered='false' :text-color="themeVars.cardColor">About</n-button>
                 </RouterLink>
             </n-flex>
         </n-flex>

@@ -1,11 +1,33 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import HeaderComponent from './layout/HeaderComponent.vue'
-import { NConfigProvider, NGlobalStyle } from 'naive-ui'
+import { NConfigProvider, NGlobalStyle, type GlobalThemeOverrides, useThemeVars } from 'naive-ui'
+
+const themeVars = useThemeVars()
+
+const themeOverrides: GlobalThemeOverrides = {
+  Card: {
+    paddingMedium: '8px',
+    paddingSmall: '8px',
+    paddingLarge: '8px',
+    paddingHuge: '12px',
+    titleFontSizeMedium: '18px',
+    titleFontSizeSmall: '16px',
+    titleFontSizeLarge: '20px',
+    titleFontSizeHuge: '24px',
+    titleFontWeight: 700,
+    titleTextColor: themeVars.value.primaryColor
+  },
+  Divider: {
+    marginVerticalMedium: '0 16px',
+    marginVerticalSmall: '0 12px'
+  },
+
+}
 </script>
 
 <template>
-  <n-config-provider>
+  <n-config-provider :theme-overrides="themeOverrides">
     <n-global-style />
     <section class="app">
       <HeaderComponent />
@@ -27,8 +49,7 @@ import { NConfigProvider, NGlobalStyle } from 'naive-ui'
 }
 
 .main-content {
-  max-height: calc(100dvh - 60px);
-  /* subtract header height */
-  overflow-y: auto;
+  max-height: calc(100dvh - 20px);
+  overflow-y: hidden;
 }
 </style>

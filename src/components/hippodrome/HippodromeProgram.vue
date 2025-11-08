@@ -1,9 +1,13 @@
 <template>
-    <n-card style="overflow-y: auto;">
-        <div v-for="(round, index) in store.state.program?.rounds ?? []" :key="round.id" class="mb-4">
-            <n-card size="small">
-                <n-text strong>{{ index + 1 }}. Lap | {{ reactiveProgram?.rounds[index]?.distance }}m</n-text>
+    <n-card size="huge" class="program-main-wrapper" style="overflow-y: auto;">
+        <n-divider style="margin-top: 0px; margin-bottom: 12px;" horizontal />
 
+        <div v-for="(round, index) in store.state.program?.rounds ?? []" :key="round.id" class="mb-4">
+            <n-card :bordered="false" style="min-height: 500px;" size="small">
+                <n-flex style="padding: 5px;" justify="space-between" class="mb-4">
+                    <n-text style="font-weight: 700">{{ index + 1 }}. Lap</n-text>
+                    <n-text style="font-weight: 700">{{ reactiveProgram?.rounds[index]?.distance }}m</n-text>
+                </n-flex>
                 <n-data-table :columns="columns" :data="getRoundData(round.positions)" :bordered="true" size="small" />
 
             </n-card>
@@ -12,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { NCard, NDataTable, NText } from "naive-ui";
+import { NCard, NDataTable, NText, NFlex, NDivider } from "naive-ui";
 import type { DataTableColumns } from "naive-ui";
 import { useStore } from "vuex";
 import { key } from "@/store/store";
@@ -52,3 +56,10 @@ const columns: DataTableColumns<{ position: number; horseId: string }> = [
 ];
 
 </script>
+
+<style scoped>
+.program-main-wrapper {
+    height: calc(100dvh - 185px);
+    max-height: calc(100dvh - 185px);
+}
+</style>

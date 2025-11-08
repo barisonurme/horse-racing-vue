@@ -1,12 +1,13 @@
 <template>
-    <n-card class="horse-list-wrapper" title="Horse List" style="overflow-y: auto;">
+    <n-card size="huge" class="horse-list-wrapper" title="Horse List">
+        <n-divider style="margin-top: 0px; margin-bottom: 12px;" horizontal />
         <n-data-table :columns="columns" :data="horses" :bordered="true" :size="'small'" />
     </n-card>
 </template>
 
 <script lang="ts" setup>
 import type { THorse } from "@/store/types/store-types";
-import { NCard, NDataTable } from "naive-ui";
+import { NCard, NDataTable, NDivider } from "naive-ui";
 import type { TableColumns } from "naive-ui/es/data-table/src/interface";
 import { h } from "vue";
 
@@ -50,6 +51,11 @@ const columns: TableColumns<THorse> = [
 
 <style scoped>
 .horse-list-wrapper {
-    overflow-y: auto;
+    min-height: calc(100dvh - 185px);
+}
+
+
+.primary-title :deep(.n-card-header__main) {
+    color: var(--n-color-primary);
 }
 </style>
