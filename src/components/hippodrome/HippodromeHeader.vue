@@ -22,7 +22,7 @@
 
             <!-- Start race button -->
             <n-button style="min-width: 120px;" @click="startRace" :type="!isGenerated ? 'tertiary' : 'primary'"
-                :disabled="!isGenerated">
+                :disabled="!isGenerated || allLapsFinished" size="large">
                 <template #icon>
                     <n-icon>
                         <n-icon :size="18" :component="isPaused ? Play16Filled : Pause16Filled" />
@@ -48,9 +48,20 @@ const generateProgram = () => {
 }
 
 
-const isPaused = computed(() => store.state.isPaused);
 const isGenerated = computed(() => !!store.state.program?.rounds.length);
+const isPaused = computed(() => store.state.isPaused);
+const program = computed(() => store.state.program);
 
+// Check if all laps are finished (no scheduled or ongoing status)
+const allLapsFinished = computed(() => {
+    const p = program.value
+    if (!p?.rounds?.length) return false
+
+    // If any round is scheduled or ongoing, not all laps are finished
+    return !p.rounds.some(round =>
+        round.status === 'scheduled' || round.status === 'ongoing'
+    )
+})
 
 const startRace = () => {
     if (isPaused.value)

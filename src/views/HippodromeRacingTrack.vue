@@ -1,6 +1,6 @@
 <template>
-    <n-card size="huge" class="track-main-wrapper" title="Race Tracks">
-        <n-divider style="margin-top: 0px; margin-bottom: 12px;" horizontal />
+    <n-card size="huge" class="track-main-wrapper" :title="dynamicTitle">
+        <n-divider style=" margin-top: 0px; margin-bottom: 12px;" horizontal />
         <n-flex v-for="trackIndex in trackPerRace" :key="trackIndex">
             <n-card class="track-wrapper" :content-style="{ padding: '0', width: '100%' }">
                 <n-flex vertical style="display: flex; flex-direction: row;">
@@ -13,10 +13,41 @@
 
 <script setup lang="ts">
 import HippodromeHorseSlider from '@/components/hippodrome/HippodromeHorseSlider.vue';
+import { key } from '@/store/store';
 
 import { NCard, NFlex, NDivider } from 'naive-ui'
+import { computed, toRef } from 'vue';
+import { useStore } from 'vuex';
 
 defineProps<{ trackPerRace: number }>()
+
+const store = useStore(key)
+const program = toRef(store.state, 'program')
+const isPaused = toRef(store.state, 'isPaused')
+const isGenerated = computed(() => !!store.state.program?.rounds.length);
+
+// Check if all laps are finished (no scheduled or ongoing status)
+const allLapsFinished = computed(() => {
+    const p = program.value
+    if (!p?.rounds?.length) return false
+
+    // If any round is scheduled or ongoing, not all laps are finished
+    return !p.rounds.some(round =>
+        round.status === 'scheduled' || round.status === 'ongoing'
+    )
+})
+
+const dynamicTitle = computed(() => {
+    if (allLapsFinished.value) {
+        return 'Click Generate'
+    } else if (isGenerated.value && isPaused.value) {
+        return 'Click Start'
+    } else if (isPaused.value) {
+        return 'Click Generate'
+    } else {
+        return 'Race In Progress'
+    }
+})
 </script>
 
 <style scoped>
