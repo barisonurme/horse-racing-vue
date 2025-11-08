@@ -45,11 +45,18 @@ const themeOverrides: GlobalThemeOverrides = {
   flex-direction: column;
   width: 100%;
   height: 100dvh;
-  /* full viewport height */
 }
 
 .main-content {
   max-height: calc(100dvh - 20px);
   overflow-y: hidden;
+}
+
+
+@media (max-width: 1200px) {
+  .main-content {
+    max-height: none;
+    overflow-y: auto;
+  }
 }
 </style>

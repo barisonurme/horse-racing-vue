@@ -52,6 +52,7 @@ const columns: TableColumns<THorse> = [
 <style scoped>
 .horse-list-wrapper {
     min-height: calc(100dvh - 185px);
+    width: 100%;
 }
 
 
