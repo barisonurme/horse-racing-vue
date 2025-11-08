@@ -1,8 +1,7 @@
 <template>
     <div class="title-wrapper">
         <div class="title-desc-wrapper">
-            <n-h1 :style="{ fontWeight: 'bolder', color: themeVars.primaryColor }">Welcome to the GallopIn’sider
-                Hippodrome!</n-h1>
+            <n-h1 :style="{ fontWeight: 'bolder', color: themeVars.primaryColor }">GallopIn’sider</n-h1>
             <n-text style="opacity: 0.8; font-size: medium;">Welcome to the GallopIn’sider
                 Hippodrome!</n-text>
         </div>
