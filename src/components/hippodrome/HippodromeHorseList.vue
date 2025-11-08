@@ -6,6 +6,7 @@
 </template>
 
 <script lang="ts" setup>
+import { HIPPODROME_CONDITION_DEBUFF_MULTIPLYER } from "@/store/store";
 import type { THorse } from "@/store/types/store-types";
 import { NCard, NDataTable, NDivider } from "naive-ui";
 import type { TableColumns } from "naive-ui/es/data-table/src/interface";
@@ -44,7 +45,7 @@ const columns: TableColumns<THorse> = [
         align: 'right',
         title: "Condition",
         key: "condition",
-        render: (row) => `${row.condition ?? Math.floor(Math.random() * 100) + 1}%`,
+        render: (row) => `${row.condition ? row.condition - HIPPODROME_CONDITION_DEBUFF_MULTIPLYER : ''}%`,
     },
 ]
 </script>
