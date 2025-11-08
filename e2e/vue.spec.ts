@@ -1,15 +1,15 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * 
+ *
  *  Basic Navigation Tests
- * 
+ *
  * */
 test('click About span and expect url to be /about', async ({ page }) => {
   await page.goto('/');
 
   // Find and click <span class="n-button__content">About</span>
-  const aboutSpan = page.locator('span.n-button__content', { hasText: 'About' });
+  const aboutSpan = page.locator('.n-button__content', { hasText: 'About' });
   await expect(aboutSpan).toBeVisible();
   await aboutSpan.click();
 
@@ -22,7 +22,7 @@ test('click Home span and expect url to be /', async ({ page }) => {
   await page.goto('/about');
 
   // Find and click <span class="n-button__content">Home</span>
-  const homeSpan = page.locator('span.n-button__content', { hasText: 'Home' });
+  const homeSpan = page.locator('.n-button__content', { hasText: /^Home$/ });
   await expect(homeSpan).toBeVisible();
   await homeSpan.click();
 
@@ -34,7 +34,7 @@ test('click Go to Hippodrome span and expect url to be /hippodrome', async ({ pa
   await page.goto('/');
 
   // Find and click <span class="n-button__content"> Go to Hippodrome </span>
-  const hippodromeSpan = page.locator('span.n-button__content', { hasText: 'Go to Hippodrome' });
+  const hippodromeSpan = page.locator('.n-button__content', { hasText: 'Go to Hippodrome' });
   await expect(hippodromeSpan).toBeVisible();
   await hippodromeSpan.click();
 
@@ -43,30 +43,34 @@ test('click Go to Hippodrome span and expect url to be /hippodrome', async ({ pa
 });
 
 /**
- * 
+ *
  *  Basic Hippodrome Tests
- * 
+ *
  * */
-test('click Go to Hippodrome and verify h1 on hippodrome page', async ({ page }) => {
+test('click Go to Hippodrome and verify content on hippodrome page', async ({ page }) => {
   await page.goto('/');
 
-  await page.locator('span.n-button__content', { hasText: 'Go to Hippodrome' }).click();
+  await page.locator('.n-button__content', { hasText: 'Go to Hippodrome' }).click();
   await expect(page).toHaveURL('/hippodrome');
 
-  // Use contains text with partial matching
-  await expect(page.locator('h1')).toContainText('Welcome to the GallopIn');
-  await expect(page.locator('h1')).toContainText('Hippodrome');
+  // Verify h1 contains the main title
+  await expect(page.locator('h1')).toContainText('GallopIn’sider');
+
+  // Verify the subtitle contains "Hippodrome"
+  await expect(page.locator('.title-desc-wrapper .n-text')).toContainText('Hippodrome');
 });
 
 test('verify horse list has 20 tr elements', async ({ page }) => {
   await page.goto('/');
 
-  await page.locator('span.n-button__content', { hasText: 'Go to Hippodrome' }).click();
+  await page.locator('.n-button__content', { hasText: 'Go to Hippodrome' }).click();
   await expect(page).toHaveURL('/hippodrome');
 
-  // Verify h1 content
-  await expect(page.locator('h1')).toContainText('Welcome to the GallopIn');
-  await expect(page.locator('h1')).toContainText('Hippodrome');
+  // Verify h1 contains the main title
+  await expect(page.locator('h1')).toContainText('GallopIn’sider');
+
+  // Verify the subtitle contains "Hippodrome"
+  await expect(page.locator('.title-desc-wrapper .n-text')).toContainText('Hippodrome');
 
   // Find div with data-test="horse-list" and then find tbody inside it
   const horseListDiv = page.locator('div[data-test="horse-list"]');
@@ -155,14 +159,14 @@ test('verify play/pause button functionality with text changes', async ({ page }
   console.log('Button text after pause:', buttonTextAfterPause);
 });
 
-/**
- * 
- *  Basic Lap 1 test
- * 
- *  Important Note: While testing this HIPPODROME_LAP_DISTANCE_MULTIPLIER
- *  should be low enougth to fit 30 time range
- * 
- * */
+// /**
+//  * 
+//  *  Basic Lap 1 test
+//  * 
+//  *  Important Note: While testing this HIPPODROME_LAP_DISTANCE_MULTIPLIER
+//  *  should be low enougth to fit 30 time range
+//  * 
+//  * */
 
 test('check all aria-valuenow values are non-zero then back to 0 within 30 seconds', async ({ page }) => {
   await page.goto('/hippodrome');
