@@ -41,11 +41,6 @@ import { computed } from "vue";
 
 const themeVars = useThemeVars();
 
-// Call mutation
-const generateProgram = () => {
-    store.commit('generateRaceProgram')
-}
-
 
 const isGenerated = computed(() => !!store.state.program?.rounds.length);
 const isPaused = computed(() => store.state.isPaused);
@@ -61,6 +56,18 @@ const allLapsFinished = computed(() => {
         round.status === 'scheduled' || round.status === 'ongoing'
     )
 })
+
+
+// Call mutation
+const generateProgram = () => {
+    if (!isPaused.value) {
+        store.dispatch('togglePause').then(() => {
+            store.commit('generateRaceProgram');
+        });
+    } else {
+        store.commit('generateRaceProgram');
+    }
+}
 
 const startRace = () => {
     if (isPaused.value)
