@@ -52,7 +52,6 @@ const currentRound = computed(() => {
 const currentHorse = computed(() => {
     const round = currentRound.value
     if (!round) return undefined
-    // for simplicity, we just return the first horse in the positions
     const firstHorseId = round.positions[trackIndex - 1]
     return store.state.horses.find(h => h.id === firstHorseId)
 })
