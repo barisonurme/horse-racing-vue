@@ -7,6 +7,7 @@ const themeVars = useThemeVars()
 
 const themeOverrides: GlobalThemeOverrides = {
   Card: {
+    color: themeVars.value.cardColor,
     paddingMedium: '8px',
     paddingSmall: '8px',
     paddingLarge: '8px',

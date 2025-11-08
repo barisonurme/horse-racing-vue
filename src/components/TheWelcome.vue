@@ -46,7 +46,6 @@ import { NCard, NButton, NText, NH1, NH3, NFlex } from "naive-ui";
   text-align: center;
   padding: 2rem;
   max-width: 700px;
-  background-color: var(--n-color-overlay);
 }
 
 .title {

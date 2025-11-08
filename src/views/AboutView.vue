@@ -1,6 +1,6 @@
 <template>
   <div class="about-page">
-    <n-card class="card" size="large">
+    <n-card class="card" size="large" :style="{ padding: '32px !important', }">
       <template #header>
         <n-h1 class="card-title">About the {{ packageInfo.name }} {{ packageInfo.version }}</n-h1>
       </template>
@@ -69,7 +69,6 @@ import router from "@/router";
 .about-page {
   display: flex;
   justify-content: center;
-  background: var(--color-background);
   padding: 24px;
   min-height: 100%;
 }
