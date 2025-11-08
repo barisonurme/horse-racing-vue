@@ -48,13 +48,21 @@
       </n-card>
 
 
+      <n-flex vertical style="margin-top: 8px;" gap="16" justify="center">
+
+        <!-- Navigate to Home -->
+        <n-button type="primary" size="large" class="start-btn" @click="router.push('/')">
+          Home Page
+        </n-button>
+      </n-flex>
     </n-card>
   </div>
 </template>
 
 <script setup lang="ts">
-import { NCard, NH1, NH2, NList, NListItem, NTag, NSpace, NText } from "naive-ui";
+import { NCard, NH1, NH2, NList, NListItem, NTag, NSpace, NText, NFlex, NButton } from "naive-ui";
 import packageInfo from "../../package.json";
+import router from "@/router";
 </script>
 
 <style scoped>
