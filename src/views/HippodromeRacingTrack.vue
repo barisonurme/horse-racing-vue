@@ -57,6 +57,14 @@ const dynamicTitle = computed(() => {
     overflow-y: auto;
 }
 
+@media (max-width: 1200px) {
+    .track-main-wrapper {
+        height: 100%;
+        max-height: 100%;
+        overflow-y: auto;
+    }
+}
+
 .track-wrapper {
     display: flex;
     justify-content: center;

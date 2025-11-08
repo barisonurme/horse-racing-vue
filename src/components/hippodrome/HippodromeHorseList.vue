@@ -1,6 +1,6 @@
 <template>
-    <n-card size="huge" class="horse-list-wrapper" title="Horse List">
-        <n-divider style="margin-top: 0px; margin-bottom: 12px;" horizontal />
+    <n-card size="huge" class="horse-list-wrapper" title="Horse List" style="overflow-y: auto;">
+        <n-divider style=" margin-top: 0px; margin-bottom: 12px;" horizontal />
         <n-data-table data-test="horse-list" :columns="columns" :data="horses" :bordered="true" :size="'small'" />
     </n-card>
 </template>
@@ -52,10 +52,17 @@ const columns: TableColumns<THorse> = [
 
 <style scoped>
 .horse-list-wrapper {
-    min-height: calc(100dvh - 185px);
-    width: 100%;
+    height: calc(100dvh - 185px);
+    max-height: calc(100dvh - 185px);
 }
 
+@media (max-width: 1200px) {
+    .horse-list-wrapper {
+        height: 100%;
+        max-height: 100%;
+        overflow-y: auto;
+    }
+}
 
 .primary-title :deep(.n-card-header__main) {
     color: var(--n-color-primary);

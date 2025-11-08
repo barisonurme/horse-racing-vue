@@ -99,24 +99,14 @@ const startRace = () => {
 
 @media (max-width: 1199px) {
     .fixed-buttons-container {
-        /* Make the container fixed on the screen */
         position: fixed;
-
-        /* Position it (e.g., top-right of the screen) */
         bottom: 10px;
         right: 10px;
-
-        /* Ensure it's above other content (critical for fixed elements) */
         z-index: 1000;
-
-        /* Use Naive UI's card background CSS variable for theme consistency */
-
-        /* Optional padding/styling for better appearance */
         padding: 8px 12px;
         border-radius: 6px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-
-        /* Ensure it's displayed if you hid it by default */
+        background-color: white;
         display: block;
     }
 }

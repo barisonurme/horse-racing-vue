@@ -57,4 +57,13 @@ const columns: DataTableColumns<{ position: number; horseId: string }> = [
     height: calc(100dvh - 185px);
     max-height: calc(100dvh - 185px);
 }
+
+
+@media (max-width: 1200px) {
+    .results-main-wrapper {
+        height: 100%;
+        max-height: 100%;
+        overflow-y: auto;
+    }
+}
 </style>
