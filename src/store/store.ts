@@ -13,6 +13,7 @@ export const HIPPODROME_HORSE_PER_RACE = Math.min(10, HIPPODROME_HORSE_COUNT); /
 export const HIPPODROME_RACE_INTERVAL_SECONDS = 30;
 export const HIPPODROME_LAP_DISTANCES = [1200, 1400, 1600, 2000, 2200, 2400];
 export const HIPPODROME_LAP_DISTANCE_MULTIPLIER = 500
+export const HIPPODROME_CONDITION_DEBUFF_MULTIPLYER = 150
 
 
 /**
@@ -36,7 +37,7 @@ const horses: THorse[] = Array.from({ length: HIPPODROME_HORSE_COUNT }, () => ({
   id: crypto.randomUUID(),
   name: generateHorseName(),
   color: generateUniqueColors({ usedColors }),
-  condition: Math.floor(Math.random() * 100) + 1
+  condition: Math.floor(Math.random() * 100) + 1 + HIPPODROME_CONDITION_DEBUFF_MULTIPLYER
 }));
 
 
