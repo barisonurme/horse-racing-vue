@@ -33,10 +33,10 @@ export const HIPPODROME_LAP_DISTANCE_MULTIPLIER = 500
  */
 const usedColors = new Set<string>();
 const horses: THorse[] = Array.from({ length: HIPPODROME_HORSE_COUNT }, () => ({
-    id: crypto.randomUUID(),
-    name: generateHorseName(),
-    color: generateUniqueColors({ usedColors }),
-    condition: Math.floor(Math.random() * 51) + 50  
+  id: crypto.randomUUID(),
+  name: generateHorseName(),
+  color: generateUniqueColors({ usedColors }),
+  condition: Math.floor(Math.random() * 100) + 1
 }));
 
 
@@ -56,11 +56,11 @@ const generatePositions = () => {
 * Generate Each round with HIPPODROME_LAP_DISTANCES
 */
 
-const generateLaps = () => { 
+const generateLaps = () => {
   const newProgram: TRaceRound[] = [];
   for (let i = 0; i < HIPPODROME_LAP_DISTANCES.length; i++) {
     const lapLength = HIPPODROME_LAP_DISTANCES[i];
-   
+
     if (lapLength === undefined) continue;
 
     const horse = horses?.[i];
@@ -80,7 +80,7 @@ const generateLaps = () => {
 /**
  * PROGRAM - GENERATE
  * Generate Race Program 
- * */ 
+ * */
 const generateRaceProgram = (): TRaceProgram => {
   return ({
     id: crypto.randomUUID(),
@@ -90,7 +90,7 @@ const generateRaceProgram = (): TRaceProgram => {
 
 /**
  * STORE | Vuex Store 
- * */ 
+ * */
 export const store = createStore<TStoreState>({
   state: () => ({
     program: undefined as unknown as TRaceProgram,
@@ -99,7 +99,7 @@ export const store = createStore<TStoreState>({
     raceInterval: null as ReturnType<typeof setInterval> | null
   }),
   mutations: {
-  
+
     // GENERATE RACE PROGRAM
     generateRaceProgram(state) {
       state.program = generateRaceProgram();
@@ -108,10 +108,10 @@ export const store = createStore<TStoreState>({
     // START ROUND
     startFirstRound(state) {
       if (!state.program) return;
-      
+
       // Find the first round with 'scheduled' status
       const firstScheduledRound = state.program.rounds.find(round => round.status === 'scheduled');
-      
+
       if (firstScheduledRound) {
         firstScheduledRound.status = 'ongoing';
 
@@ -121,12 +121,12 @@ export const store = createStore<TStoreState>({
         });
       }
     },
-    
+
     // PAUSE TOGGLE
     setPaused(state, isPaused: boolean) {
       state.isPaused = isPaused;
     },
-    
+
     // SETTING RACE INTERVAL
     setRaceInterval(state, interval: ReturnType<typeof setInterval> | null) {
       state.raceInterval = interval;
@@ -143,7 +143,7 @@ export const store = createStore<TStoreState>({
   actions: {
     runRound({ state, commit }) {
       if (state.isPaused) return; // Don't run if paused
-      
+
       const round = state.program?.rounds.find(r => r.status === 'ongoing');
       if (!round) return;
 
@@ -160,13 +160,13 @@ export const store = createStore<TStoreState>({
         const currentPosition = round.currentHorsePositions[horseId] ?? 0;
         if (currentPosition < round.distance) {
           const horseCondition = state.horses.find(h => h.id === horseId)?.condition || 0;
-          const newPosition = currentPosition + horseCondition / HIPPODROME_LAP_DISTANCE_MULTIPLIER; 
+          const newPosition = currentPosition + horseCondition / HIPPODROME_LAP_DISTANCE_MULTIPLIER;
           round.currentHorsePositions[horseId] = newPosition;
 
           // Check if horse just finished in this round
           if (newPosition >= round.distance && round.results && !round.results.includes(horseId)) {
             round.results.push(horseId);
-            
+
             // Set winner if it's the first horse to finish
             if (!round.winnerId) {
               round.winnerId = horseId;
@@ -187,18 +187,18 @@ export const store = createStore<TStoreState>({
     // Action to start the race with interval
     startRace({ commit, dispatch }) {
       commit('setPaused', false);
-      
+
       // Clear any existing interval
       commit('clearRaceInterval');
-      
+
       // Start first round if not already started
       commit('startFirstRound');
-      
+
       // Set up the race interval
       const interval = setInterval(() => {
         dispatch('runRound');
       }, 100 / HIPPODROME_LAP_DISTANCE_MULTIPLIER * 2);
-      
+
       commit('setRaceInterval', interval);
     },
 
@@ -206,7 +206,7 @@ export const store = createStore<TStoreState>({
     togglePause({ commit, state, dispatch }) {
       const newPausedState = !state.isPaused;
       commit('setPaused', newPausedState);
-      
+
       if (newPausedState) {
         commit('clearRaceInterval');
       } else {
@@ -216,7 +216,7 @@ export const store = createStore<TStoreState>({
         }, 100 / HIPPODROME_LAP_DISTANCE_MULTIPLIER * 2);
         commit('setRaceInterval', interval);
       }
-      
+
       return newPausedState;
     },
 
