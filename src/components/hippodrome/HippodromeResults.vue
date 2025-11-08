@@ -51,7 +51,7 @@ const columns: DataTableColumns<{ position: number; horseId: string }> = [
         title: "Name",
         key: "horseId",
         align: "left",
-        render: (row) => (horses.find(h => h.id === row.horseId)?.name || 'Unknown') + (horses.find(h => h.id === row.horseId)?.condition || ' (Unknown Condition)'),
+        render: (row) => (horses.find(h => h.id === row.horseId)?.name || 'Unknown'),
 
     },
 ];
