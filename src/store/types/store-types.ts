@@ -2,8 +2,7 @@ export type TStoreState = {
   program?: TRaceProgram
   isPaused?: boolean;
   horses: THorse[];
-    raceInterval: ReturnType<typeof setInterval> | null
-
+  raceInterval: ReturnType<typeof setInterval> | null
 }
 
 export type TRaceStatus = "scheduled" | "ongoing" | "paused" | "completed";
@@ -16,10 +15,10 @@ export type THorse = {
 };
 
 export type TRaceRound = {
-  id: string; 
+  id: string;
   distance: number;
   currentHorsePositions: Record<string, number>;
-  positions: string[]; 
+  positions: string[];
   results?: string[];
   winnerId?: string;
   status: TRaceStatus;
