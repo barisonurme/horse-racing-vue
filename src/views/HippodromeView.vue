@@ -8,7 +8,7 @@
                 <HippodromeHorseList :horses="horses" />
             </n-grid-item>
             <n-grid-item :span="5">
-                <HippodromeRacingTrack :trackPerRace="HIPPODROME_TRACK_PER_RACE" />
+                <HippodromeRacingTrack :trackPerRace="HIPPODROME_HORSE_PER_RACE" />
             </n-grid-item>
             <n-grid-item :span="2">
                 <HippodromeProgram title="Program" />
@@ -27,7 +27,7 @@ import { NDivider, NGrid, NGridItem } from "naive-ui";
 import HippodromeRacingTrack from "./HippodromeRacingTrack.vue";
 import HippodromeProgram from "@/components/hippodrome/HippodromeProgram.vue";
 import { useStore } from "vuex";
-import { HIPPODROME_TRACK_PER_RACE, key } from "@/store/store";
+import { HIPPODROME_HORSE_PER_RACE, key } from "@/store/store";
 import HippodromeResults from "@/components/hippodrome/HippodromeResults.vue";
 
 
