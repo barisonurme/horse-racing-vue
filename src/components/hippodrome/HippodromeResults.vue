@@ -20,7 +20,7 @@ import { NCard, NDataTable, NText, NFlex, NDivider } from "naive-ui";
 import type { DataTableColumns } from "naive-ui";
 import { useStore } from "vuex";
 import { key } from "@/store/store";
-import { computed, watch } from "vue";
+import { computed } from "vue";
 
 const store = useStore(key);
 
@@ -34,13 +34,7 @@ const getRoundData = (result: string[]) =>
         horseId,
     }));
 
-watch(
-    () => store.state.program,
-    (newProgram) => {
-        console.log("Program updated:", newProgram);
-    },
-    { immediate: true, deep: true }
-);
+
 const columns: DataTableColumns<{ position: number; horseId: string }> = [
     {
         title: "Position",

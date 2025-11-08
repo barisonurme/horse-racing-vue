@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch, toRef } from 'vue'
+import { computed, toRef } from 'vue'
 import { NSlider, NIconWrapper, NFlex, NText } from 'naive-ui'
 import { useStore } from 'vuex'
 import { key } from '@/store/store'
@@ -73,14 +73,6 @@ const currentHorsePosition = computed({
 })
 
 
-
-watch(
-    currentHorsePosition,
-    (horse) => {
-        console.log('currentHorsePosition:', horse)
-    },
-    { immediate: true } // add deep only if you return an object and need nested tracking
-)
 
 const { trackIndex } = defineProps<{ trackIndex: number }>()
 </script>
