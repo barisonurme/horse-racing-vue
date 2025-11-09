@@ -63,7 +63,7 @@ const dynamicTitle = computed(() => {
     flex-direction: column;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
     .track-main-wrapper {
         height: 100%;
         max-height: 100%;

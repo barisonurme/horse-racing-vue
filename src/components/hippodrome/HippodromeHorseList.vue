@@ -56,7 +56,7 @@ const columns: TableColumns<THorse> = [
     max-height: calc(100dvh - 185px);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
     .horse-list-wrapper {
         height: 100%;
         max-height: 100%;

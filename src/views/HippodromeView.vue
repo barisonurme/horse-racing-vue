@@ -3,7 +3,7 @@
         <HippodromeHeader />
         <NDivider style="margin-top: 8px; margin-bottom: 8px;" horizontal />
 
-        <NGrid cols="1 s:2 m:4 l:12" responsive="screen" style="gap: 8px">
+        <NGrid cols="1 s:2 m:2 l:12" responsive="screen" style="gap: 8px">
             <NGrid-item :span="3" :s-span="1" :m-span="1" :l-span="1">
                 <HippodromeHorseList :horses="horses" />
             </NGrid-item>
@@ -46,7 +46,7 @@ const { horses } = store.state;
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
     .main-wrapper {
         /* Remove max-height on large screens */
         max-height: none;

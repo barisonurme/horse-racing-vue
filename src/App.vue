@@ -54,7 +54,7 @@ const themeOverrides: GlobalThemeOverrides = {
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .main-content {
     max-height: none;
     overflow-y: auto;

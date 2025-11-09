@@ -59,7 +59,7 @@ const columns: DataTableColumns<{ position: number; horseId: string }> = [
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
     .results-main-wrapper {
         height: 100%;
         max-height: 100%;
