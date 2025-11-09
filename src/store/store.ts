@@ -186,10 +186,15 @@ export const store = createStore<TStoreState>({
     },
 
     // Action to start the race with interval
-    startRace({ commit, dispatch }) {
+    startRace({ commit, dispatch, state }) {
+      // Prevent multiple intervals from being created
+      if (!state.isPaused && state.raceInterval) {
+        return; // Race already running
+      }
+
       commit('setPaused', false);
 
-      // Clear any existing interval
+      // Clear any existing interval (safety check)
       commit('clearRaceInterval');
 
       // Start first round if not already started
@@ -211,7 +216,9 @@ export const store = createStore<TStoreState>({
       if (newPausedState) {
         commit('clearRaceInterval');
       } else {
-        // Resume the race
+        // Resume the race - clear any existing interval first (safety check)
+        commit('clearRaceInterval');
+        
         const interval = setInterval(() => {
           dispatch('runRound');
         }, 100 / HIPPODROME_LAP_DISTANCE_MULTIPLIER * 2);

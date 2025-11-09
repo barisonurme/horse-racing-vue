@@ -29,11 +29,19 @@ import HippodromeProgram from "@/components/hippodrome/HippodromeProgram.vue";
 import { useStore } from "vuex";
 import { HIPPODROME_HORSE_PER_RACE, key } from "@/store/store";
 import HippodromeResults from "@/components/hippodrome/HippodromeResults.vue";
+import { onUnmounted } from "vue";
 
 
 const store = useStore(key)
 const { horses } = store.state;
 
+// Cleanup intervals when component unmounts
+onUnmounted(() => {
+    if (store.state.raceInterval) {
+        store.commit('clearRaceInterval');
+        store.commit('setPaused', true);
+    }
+});
 
 </script>
 
