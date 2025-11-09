@@ -31,6 +31,9 @@
             </template>
         </NSlider>
     </NFlex>
+    <p
+        :style="{ backgroundColor: currentHorse?.color || '#18a058', color: '#fff', width: '4px', transform: 'translateX(-25px)' }">
+    </p>
 </template>
 
 <script setup lang="ts">
